@@ -14,9 +14,13 @@ class ComicController extends Controller
      */
     public function index()
     {
-        // $comics = Comic::all();
+        $comics = Comic::all();
 
-        return view('comics.index');
+        $data = [
+            'comics' => $comics
+        ];
+    
+        return view('comics.index', $data);
     }
 
     /**
@@ -48,7 +52,13 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+
+        $data = [
+            'comic' => $comic
+        ];
+        
+        return view('comics.show', $data);
     }
 
     /**
