@@ -8,4 +8,5 @@
     <div><strong>Anno: </strong>{{$comic->year}}</div>
     <div><strong>Descrizione: </strong>{{$comic->description}}</div>
     <div><strong>Prezzo: </strong>{{$comic->price}} €</div>
+    <div><button><a href="{{ route('comics.edit', ['comic' => $comic->id ]) }}">Modifica fumetto</a></button></div>
 @endsection

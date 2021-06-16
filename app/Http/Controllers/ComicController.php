@@ -41,7 +41,22 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $form_data = $request->all();
+
+        // in questa variabile aggiungo una nuova istanza di comic (una riga del DB)
+        $comic = new Comic();
+
+        // poi inserisco i dati provenienti dal form
+        $comic->name = $form_data['name'];
+        $comic->year = $form_data['year'];
+        $comic->description = $form_data['description'];
+        $comic->price = $form_data['price'];
+        $comic->cover = $form_data['cover'];
+        $comic->save();
+
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
+
     }
 
     /**
@@ -69,7 +84,13 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        
+        $data = [
+            'comic' => $comic
+        ];
+
+        return view('comics.edit', $data);
     }
 
     /**
@@ -81,7 +102,17 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // richiamo i dati del form
+        $form_data = $request->all();
+        dd($form_data);
+
+        // richiamo l'elemento da modificare tramite id
+        // $comic_to_modify = Comic::find('id');
+
+        // poi aggiorno i dati dell'elemento
+        // $comic_to_modify->update($form_data);
+
+        // return redirect()->route('comic.show', ['comic' => $comic->id]);
     }
 
     /**
