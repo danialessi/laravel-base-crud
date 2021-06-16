@@ -104,15 +104,15 @@ class ComicController extends Controller
     {
         // richiamo i dati del form
         $form_data = $request->all();
-        dd($form_data);
 
         // richiamo l'elemento da modificare tramite id
-        // $comic_to_modify = Comic::find('id');
+        $comic_to_modify = Comic::find($id);
 
         // poi aggiorno i dati dell'elemento
-        // $comic_to_modify->update($form_data);
+        $comic_to_modify->update($form_data);
 
-        // return redirect()->route('comic.show', ['comic' => $comic->id]);
+
+        return redirect()->route('comics.show', ['comic' => $comic_to_modify->id]);
     }
 
     /**

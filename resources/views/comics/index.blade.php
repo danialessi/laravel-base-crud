@@ -6,8 +6,8 @@
 
     @foreach ($comics as $comic)
     <div>
-        <div><img src="{{ $comic->cover }}" alt=""></div>
         <div><strong>Nome: </strong>{{$comic->name}}</div>
+        <div><img src="{{ $comic->cover }}" alt=""></div>
         <div><button><a href="{{ route('comics.show', ['comic' => $comic->id ]) }}">Dettagli</a></button></div>
         <div><button><a href="{{ route('comics.edit', ['comic' => $comic->id ]) }}">Modifica fumetto</a></button></div>
     </div> 
